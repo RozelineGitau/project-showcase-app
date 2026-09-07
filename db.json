@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Kenyan Coffee",
+      "description": "Premium coffee from Nyeri.",
+      "price": 1200,
+      "category": "Coffee"
+    },
+    {
+      "id": "2",
+      "name": "Kenyan Tea",
+      "description": "Premium tea from Kericho.",
+      "price": 950,
+      "category": "Tea"
+    },
+    {
+      "id": "3",
+      "name": "Maasai Bracelet",
+      "description": "Handmade Kenyan beaded bracelet.",
+      "price": 850,
+      "category": "Fashion"
+    }
+  ]
+}
