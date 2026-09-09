@@ -20,6 +20,14 @@
       "description": "Handmade Kenyan beaded bracelet.",
       "price": 850,
       "category": "Fashion"
+    },
+    {
+      "name": "kiwi",
+      "price": 4,
+      "category": "FRUITS",
+      "description": "FRUIT",
+      "id": "IjvA6Y0aT20"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
