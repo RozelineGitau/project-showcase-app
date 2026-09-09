@@ -1,93 +1,179 @@
-#  SokoHub Kenya
+# SokoHub Kenya
 
-SokoHub Kenya is a **React-based e-commerce administrator portal** designed to manage products through a simple and user-friendly interface.
+## Project Overview
 
-The application allows administrators to view, search, add, update, and delete products. It uses **JSON Server** as a lightweight backend for storing and managing product data.
+SokoHub Kenya is a simple React application for managing a collection of Kenyan products.
 
-##  Features
+The application allows an administrator to:
 
-* View all available products
-* Search for products
+* View available products
 * View individual product details
 * Add new products
 * Update product prices
 * Delete products
-* Navigate between pages using React Router
-* Fetch product data using a custom React hook
-* Store product data using JSON Server
+* Navigate between different pages using React Router
+
+The project uses React for the frontend and JSON Server as a simple local backend/API.
+
+---
+
+## Features
+
+### Home Page
+
+The home page introduces SokoHub Kenya and provides a link to view the available products.
+
+### Products Page
+
+The products page displays all products stored in the database.
+
+Each product displays:
+
+* Product name
+* Description
+* Category
+* Price
+* Link to view more details
+
+### Product Details
+
+Each product has its own details page.
+
+The administrator can:
+
+* View the product information
+* Change the product price
+* Delete the product
+
+### Add Product
+
+The Add Product page contains a form for creating a new product.
+
+The form collects:
+
+* Product name
+* Price
+* Category
+* Description
+
+After submitting the form, the new product is saved to the JSON Server database.
+
+### Navigation
+
+React Router is used to navigate between:
+
+* Home
+* Products
+* Add Product
+* Product Details
+
+---
 
 ## Technologies Used
 
-* **React** – Building the user interface
-* **Vite** – Development and build tool
-* **React Router** – Client-side navigation
-* **JavaScript (ES6+)** – Application logic
-* **CSS** – Styling
-* **JSON Server** – Mock REST API and data storage
+* React
+* JavaScript
+* JSX
+* React Router
+* Vite
+* JSON Server
+* HTML
+* CSS
+* Git
+* GitHub
+
+---
 
 ## Project Structure
 
 ```text
 project-showcase-app/
 │
-├── project-showcase-app/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── App.jsx
-│   │   │   ├── Home.jsx
-│   │   │   ├── Products.jsx
-│   │   │   ├── AddProduct.jsx
-│   │   │   ├── Product.jsx
-│   │   │   └── Navbar.jsx
-│   │   │
-│   │   ├── hooks/
-│   │   │   └── useProducts.js
-│   │   │
-│   │   └── index.css
+├── public/
+│
+├── src/
+│   ├── assets/
+│   │   └── hero.png
 │   │
-│   └── ...
+│   ├── components/
+│   │   ├── AddProduct.jsx
+│   │   ├── Home.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── Product.jsx
+│   │   ├── Products.jsx
+│   │   └── useProducts.js
+│   │
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
 │
 ├── db.json
+├── index.html
 ├── package.json
 ├── package-lock.json
+├── vite.config.js
+├── .gitignore
 └── README.md
 ```
 
-## Components 
+---
+
+## Components
 
 ### `App.jsx`
 
-Defines the application's routes and connects the different pages using React Router.
+Sets up the application's routes using React Router.
+
+### `Navbar.jsx`
+
+Provides navigation links to the different pages.
 
 ### `Home.jsx`
 
-Displays the landing page of the application.
+Displays the application's welcome page.
 
 ### `Products.jsx`
 
-Displays the list of products and provides product search functionality.
+Fetches and displays the list of products.
+
+### `Product.jsx`
+
+Displays details for one product and provides options to update its price or delete it.
 
 ### `AddProduct.jsx`
 
 Contains the form used to add new products.
 
-### `Product.jsx`
-
-Displays individual product information and provides functionality to update or delete a product.
-
-### `Navbar.jsx`
-
-Provides navigation links between the different sections of the application.
-
 ### `useProducts.js`
 
-A custom React hook responsible for fetching and working with product data.
+A custom React hook that fetches products from the JSON Server API.
 
-### `db.json`
+---
 
-Acts as the local database for the application when using JSON Server.
+## Data
 
-##  Installation
+Product information is stored in:
+
+```text
+db.json
+```
+
+The database contains products with the following information:
+
+```json
+{
+  "id": "1",
+  "name": "Kenyan Coffee",
+  "description": "Premium coffee from Nyeri.",
+  "price": 1200,
+  "category": "Coffee"
+}
+```
+
+---
+
+## Getting Started
 
 ### 1. Clone the repository
 
@@ -95,7 +181,7 @@ Acts as the local database for the application when using JSON Server.
 git clone https://github.com/RozelineGitau/project-showcase-app.git
 ```
 
-### 2. Navigate into the project
+### 2. Open the project
 
 ```bash
 cd project-showcase-app
@@ -107,85 +193,139 @@ cd project-showcase-app
 npm install
 ```
 
-##  Running the Application
-
-The project requires **two terminals** because the React frontend and JSON Server backend run separately.
-
-### Terminal 1 – Start JSON Server
-
-```bash
-npx json-server db.json --port 3001
-```
-
-The JSON Server will run on:
-
-```text
-http://localhost:3001
-```
-
-### Terminal 2 – Start React
+### 4. Start the React application
 
 ```bash
 npm run dev
 ```
 
-Vite will provide a local development URL, usually:
+Vite will provide a local URL, usually:
 
 ```text
 http://localhost:5173
 ```
 
-Open the URL in your browser to use the application.
+### 5. Start JSON Server
 
-##  Application Flow
+Open a second terminal in the project folder and run:
 
-```text
-User
-  ↓
-React Interface
-  ↓
-React Router
-  ↓
-Product Components
-  ↓
-Custom useProducts Hook
-  ↓
-JSON Server
-  ↓
-db.json
+```bash
+npm run server
 ```
 
-The React application communicates with JSON Server to retrieve and modify product data.
+JSON Server will run on:
 
-## Learning Objectives
+```text
+http://localhost:3000
+```
 
-This project demonstrates practical knowledge of:
+The products API is available at:
 
-* React components
-* JSX
-* React Router
-* React hooks
-* Custom hooks
-* Fetching data from an API
-* CRUD operations
-* Controlled forms
-* Event handling
-* State management
-* Component organization
-* REST API concepts
-* JSON Server
-* CSS styling
+```text
+http://localhost:3000/products
+```
+
+---
+
+## Running the Application
+
+Two terminals are required when developing the application.
+
+### Terminal 1
+
+```bash
+npm run dev
+```
+
+This runs the React application.
+
+### Terminal 2
+
+```bash
+npm run server
+```
+
+This runs the JSON Server API.
+
+The React application communicates with the API through:
+
+```text
+http://localhost:3000/products
+```
+
+---
+
+## Available Routes
+
+| Route           | Description          |
+| --------------- | -------------------- |
+| `/`             | Home page            |
+| `/products`     | View all products    |
+| `/add`          | Add a new product    |
+| `/products/:id` | View product details |
+
+---
+
+## API Operations
+
+The application uses the JSON Server API to manage products.
+
+### Get all products
+
+```text
+GET /products
+```
+
+### Get one product
+
+```text
+GET /products/:id
+```
+
+### Add a product
+
+```text
+POST /products
+```
+
+### Update a product
+
+```text
+PATCH /products/:id
+```
+
+### Delete a product
+
+```text
+DELETE /products/:id
+```
+
+---
+
+## Testing the Build
+
+To check that the application can successfully build for production, run:
+
+```bash
+npm run build
+```
+
+A successful build should produce a `dist` folder without errors.
+
+---
+
+## Git and GitHub
+
+The project uses Git for version control.
+
+The `.gitignore` file prevents unnecessary files such as `node_modules` and `dist` from being committed.
+
+
 
 ## Author
 
 **Rozeline Gitau**
 
-GitHub: [RozelineGitau](https://github.com/RozelineGitau)
+GitHub username:RozelineGitau
 
-## Project Repository
-
-https://github.com/RozelineGitau/project-showcase-app
-
-## 📄 License
-
-This project was created for educational and portfolio purposes.
+https://github.com/RozelineGitau
