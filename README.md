@@ -2,18 +2,18 @@
 
 ## Project Overview
 
-SokoHub Kenya is a simple React application for managing a collection of Kenyan products.
+SokoHub Kenya is a React web application that allows an administrator to manage a collection of Kenyan products.
 
-The application allows an administrator to:
+The application allows the administrator to:
 
-* View available products
+* View all products
 * View individual product details
 * Add new products
 * Update product prices
 * Delete products
-* Navigate between different pages using React Router
+* Navigate between pages using React Router
 
-The project uses React for the frontend and JSON Server as a simple local backend/API.
+The project uses **React and Vite** for the frontend and **JSON Server** as a local REST API for storing and managing product data.
 
 ---
 
@@ -21,11 +21,11 @@ The project uses React for the frontend and JSON Server as a simple local backen
 
 ### Home Page
 
-The home page introduces SokoHub Kenya and provides a link to view the available products.
+The home page introduces SokoHub Kenya and provides navigation to the products section.
 
 ### Products Page
 
-The products page displays all products stored in the database.
+The products page displays all available products from the JSON Server API.
 
 Each product displays:
 
@@ -33,21 +33,21 @@ Each product displays:
 * Description
 * Category
 * Price
-* Link to view more details
+* Link to view product details
 
 ### Product Details
 
-Each product has its own details page.
+The product details page displays information about a selected product.
 
 The administrator can:
 
-* View the product information
-* Change the product price
+* View product information
+* Update the product price
 * Delete the product
 
 ### Add Product
 
-The Add Product page contains a form for creating a new product.
+The Add Product page provides a form for creating a new product.
 
 The form collects:
 
@@ -56,7 +56,7 @@ The form collects:
 * Category
 * Description
 
-After submitting the form, the new product is saved to the JSON Server database.
+After submission, the product is saved to the JSON Server database.
 
 ### Navigation
 
@@ -123,11 +123,11 @@ project-showcase-app/
 
 ### `App.jsx`
 
-Sets up the application's routes using React Router.
+Defines the application's routes using React Router.
 
 ### `Navbar.jsx`
 
-Provides navigation links to the different pages.
+Provides navigation links between the different pages.
 
 ### `Home.jsx`
 
@@ -135,19 +135,19 @@ Displays the application's welcome page.
 
 ### `Products.jsx`
 
-Fetches and displays the list of products.
+Fetches and displays all products from the JSON Server API.
 
 ### `Product.jsx`
 
-Displays details for one product and provides options to update its price or delete it.
+Displays details for an individual product and allows the administrator to update its price or delete it.
 
 ### `AddProduct.jsx`
 
-Contains the form used to add new products.
+Contains the form used to add a new product.
 
 ### `useProducts.js`
 
-A custom React hook that fetches products from the JSON Server API.
+A custom React hook responsible for fetching product data from the API.
 
 ---
 
@@ -159,7 +159,9 @@ Product information is stored in:
 db.json
 ```
 
-The database contains products with the following information:
+The database contains a `products` collection.
+
+Example:
 
 ```json
 {
@@ -175,45 +177,41 @@ The database contains products with the following information:
 
 ## Getting Started
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/RozelineGitau/project-showcase-app.git
 ```
 
-### 2. Open the project
+### 2. Navigate to the Project
 
 ```bash
 cd project-showcase-app
 ```
 
-### 3. Install dependencies
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 4. Start the React application
+JSON Server is already included as a project dependency, so there is **no need to install it separately**.
 
-```bash
-npm run dev
-```
+---
 
-Vite will provide a local URL, usually:
+## Running the Application
 
-```text
-http://localhost:5173
-```
+The application requires two running processes: the React development server and JSON Server.
 
-### 5. Start JSON Server
+### Terminal 1 — Start JSON Server
 
-Open a second terminal in the project folder and run:
+From the project directory, run:
 
 ```bash
 npm run server
 ```
 
-JSON Server will run on:
+JSON Server will start on:
 
 ```text
 http://localhost:3000
@@ -225,33 +223,21 @@ The products API is available at:
 http://localhost:3000/products
 ```
 
----
+### Terminal 2 — Start React
 
-## Running the Application
-
-Two terminals are required when developing the application.
-
-### Terminal 1
+Open a second terminal in the project directory and run:
 
 ```bash
 npm run dev
 ```
 
-This runs the React application.
-
-### Terminal 2
-
-```bash
-npm run server
-```
-
-This runs the JSON Server API.
-
-The React application communicates with the API through:
+Vite will provide a local development URL, usually:
 
 ```text
-http://localhost:3000/products
+http://localhost:5173
 ```
+
+Open the provided Vite URL in your browser.
 
 ---
 
@@ -266,66 +252,126 @@ http://localhost:3000/products
 
 ---
 
-## API Operations
+## API Endpoints
 
-The application uses the JSON Server API to manage products.
+The application communicates with JSON Server through the following endpoints:
 
-### Get all products
+### Get All Products
 
 ```text
-GET /products
+GET http://localhost:3000/products
 ```
 
-### Get one product
+### Get One Product
 
 ```text
-GET /products/:id
+GET http://localhost:3000/products/:id
 ```
 
-### Add a product
+### Add a Product
 
 ```text
-POST /products
+POST http://localhost:3000/products
 ```
 
-### Update a product
+### Update a Product
 
 ```text
-PATCH /products/:id
+PATCH http://localhost:3000/products/:id
 ```
 
-### Delete a product
+### Delete a Product
 
 ```text
-DELETE /products/:id
+DELETE http://localhost:3000/products/:id
 ```
 
 ---
 
-## Testing the Build
+## Available Scripts
 
-To check that the application can successfully build for production, run:
+### Start React Development Server
+
+```bash
+npm run dev
+```
+
+### Start JSON Server
+
+```bash
+npm run server
+```
+
+### Create Production Build
 
 ```bash
 npm run build
 ```
 
-A successful build should produce a `dist` folder without errors.
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Run Linter
+
+```bash
+npm run lint
+```
 
 ---
 
-## Git and GitHub
+## Production Build
 
-The project uses Git for version control.
+To check that the React application builds successfully, run:
 
-The `.gitignore` file prevents unnecessary files such as `node_modules` and `dist` from being committed.
+```bash
+npm run build
+```
 
+A successful build creates a `dist` directory.
 
+The `dist` directory is excluded from Git using `.gitignore`.
+
+---
+
+## Git and `.gitignore`
+
+The project includes a `.gitignore` file to prevent unnecessary files from being committed to GitHub.
+
+It includes:
+
+```text
+node_modules/
+dist/
+.env
+.env.local
+```
+
+This prevents dependencies, build files, and local environment files from being tracked by Git.
+
+---
+
+## Future Improvements
+
+If additional development time is available, the following features could be added:
+
+* Product search
+* Category filtering
+* Product images
+* Improved form validation
+* Better loading and error messages
+* Responsive design improvements
+* Administrator authentication
+* Product sorting
+* Confirmation messages for successful actions
+
+---
 
 ## Author
 
 **Rozeline Gitau**
 
-GitHub username:RozelineGitau
-
+GitHub:
 https://github.com/RozelineGitau
